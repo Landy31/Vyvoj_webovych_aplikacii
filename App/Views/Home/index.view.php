@@ -1,0 +1,24 @@
+<?php
+/** @var \Framework\Support\LinkGenerator $link */
+?>
+<section class="empty-state" aria-labelledby="overview-title">
+    <div class="empty-state-inner">
+        <svg class="welcome-illustration" viewBox="0 0 340 160" role="img" aria-label="Oblečenie na stojane">
+            <circle cx="170" cy="76" r="65" fill="#FFF0B9"/>
+            <path d="M75 32 H264 M88 32 V136 M251 32 V136" fill="none" stroke="#B89A65" stroke-width="5" stroke-linecap="round"/>
+            <path d="M88 136 H251" stroke="#E9B64D" stroke-width="4"/>
+            <path d="M110 45 Q117 32 124 45 L133 54 L121 64 L109 54Z M146 45 Q153 32 160 45 L169 54 L157 64 L145 54Z M182 45 Q189 32 196 45 L205 54 L193 64 L181 54Z M218 45 Q225 32 232 45 L241 54 L229 64 L217 54Z" fill="none" stroke="#A77C40" stroke-width="2"/>
+            <path d="M106 57 H128 L135 82 L129 109 H103 L98 82Z" fill="#F8C640"/>
+            <path d="M142 57 H164 L171 82 L165 109 H139 L134 82Z" fill="#FFFDF6" stroke="#E2D1AA"/>
+            <path d="M178 57 H200 L207 82 L201 109 H175 L170 82Z" fill="#F6A04D"/>
+            <path d="M214 57 H236 L243 82 L237 109 H211 L206 82Z" fill="#F7DF9C"/>
+            <path d="M48 128 Q42 108 59 91 M51 113 Q35 110 29 97 M53 105 Q66 101 72 86" fill="none" stroke="#75865C" stroke-width="3" stroke-linecap="round"/>
+            <path d="M39 126 H63 L59 145 H43Z" fill="#E6AE70"/>
+            <path d="M285 124 H312 L309 143 H288Z" fill="#F2C76F"/>
+            <path d="M291 124 Q292 110 299 110 Q306 110 306 124" fill="none" stroke="#C58A32" stroke-width="2"/>
+        </svg>
+        <h1 id="overview-title">Hlavná obsahová oblasť</h1>
+        <p>Priestor pre obsah vybranej sekcie</p>
+        <a class="button button-primary empty-state-link" href="<?= $link->url('home.addProduct') ?>">Pridať nový produkt</a>
+    </div>
+</section>
