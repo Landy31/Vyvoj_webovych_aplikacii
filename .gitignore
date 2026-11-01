@@ -1,0 +1,34 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+docker/.env
+docker/.env.*
+
+# PhpStorm
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Dependencies
+vendor/
+node_modules/
+
+# Logs
+*.log
+storage/logs/
+
+# Cache and temporary files
+cache/
+tmp/
+
+# Docker generated data
+docker/data/
+docker/volumes/
+
+# Operating system
+.DS_Store
+Thumbs.db
+Desktop.ini
