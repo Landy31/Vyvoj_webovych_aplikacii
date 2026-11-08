@@ -13,12 +13,12 @@
             <path d="M178 57 H200 L207 82 L201 109 H175 L170 82Z" fill="#F6A04D"/>
             <path d="M214 57 H236 L243 82 L237 109 H211 L206 82Z" fill="#F7DF9C"/>
             <path d="M48 128 Q42 108 59 91 M51 113 Q35 110 29 97 M53 105 Q66 101 72 86" fill="none" stroke="#75865C" stroke-width="3" stroke-linecap="round"/>
-            <path d="M39 126 H63 L59 145 H43Z" fill="#E6AE70"/>
-            <path d="M285 124 H312 L309 143 H288Z" fill="#F2C76F"/>
-            <path d="M291 124 Q292 110 299 110 Q306 110 306 124" fill="none" stroke="#C58A32" stroke-width="2"/>
         </svg>
-        <h1 id="overview-title">Hlavná obsahová oblasť</h1>
-        <p>Priestor pre obsah vybranej sekcie</p>
-        <a class="button button-primary empty-state-link" href="<?= $link->url('home.addProduct') ?>">Pridať nový produkt</a>
+        <h1 id="overview-title">Vitajte v administrácii E-Clothing</h1>
+        <p>Spravujte produkty, ceny a skladové zásoby svojho obchodu na jednom mieste.</p>
+        <div class="overview-actions">
+            <a class="button button-primary" href="<?= $link->url('product.index') ?>">Zobraziť produkty</a>
+            <a class="button button-secondary" href="<?= $link->url('product.add') ?>">Pridať nový produkt</a>
+        </div>
     </div>
 </section>
