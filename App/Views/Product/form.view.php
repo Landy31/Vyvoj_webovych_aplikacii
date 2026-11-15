@@ -1,10 +1,11 @@
 <?php
 /** @var \App\Models\Product $product */
+/** @var \App\Models\Category[] $categories */
+/** @var \App\Models\Category[] $categories */
 /** @var string[] $errors */
 /** @var \Framework\Support\LinkGenerator $link */
 $escape = static fn($value): string => htmlspecialchars((string)$value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 $isEdit = $product->getId() !== null;
-$categories = ['Tričká', 'Nohavice', 'Bundy', 'Mikiny', 'Šaty', 'Doplnky'];
 $sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 $colors = ['Čierna', 'Biela', 'Modrá', 'Červená', 'Sivá', 'Žltá', 'Zelená'];
 ?>
@@ -38,11 +39,11 @@ $colors = ['Čierna', 'Biela', 'Modrá', 'Červená', 'Sivá', 'Žltá', 'Zelen�
                 </div>
                 <div class="field-row">
                     <div class="field">
-                        <label for="category">Kategória <span>*</span></label>
-                        <select id="category" name="category" required>
+                        <label for="categoryId">Kategória <span>*</span></label>
+                        <select id="categoryId" name="categoryId" required>
                             <option value="">Vyberte kategóriu</option>
                             <?php foreach ($categories as $category) : ?>
-                                <option value="<?= $escape($category) ?>"<?= $product->getCategory() === $category ? ' selected' : '' ?>><?= $escape($category) ?></option>
+                                <option value="<?= (int)$category->getId() ?>"<?= $product->getCategoryId() === $category->getId() ? ' selected' : '' ?>><?= $escape($category->getName()) ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

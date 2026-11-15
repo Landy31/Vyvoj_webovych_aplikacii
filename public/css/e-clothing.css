@@ -848,3 +848,61 @@ a {
   .row-actions { justify-content:flex-end; flex-wrap:wrap; }
   .crud-card-heading { padding:16px; }
 }
+
+
+/* Category CRUD and Category 1:N Product relationship */
+.category-text-link { color:#a9670c; font-weight:700; text-decoration:none; }
+.category-text-link:hover { text-decoration:underline; }
+.muted-text { color:#918a7e; font-size:12px; }
+.linked-products { display:flex; flex-wrap:wrap; gap:5px; max-width:390px; }
+.linked-product-chip { display:inline-flex; padding:5px 8px; border:1px solid #f0dfb5; border-radius:999px; background:#fff8e7; color:#80530d; font-size:11px; text-decoration:none; }
+.linked-product-chip:hover { border-color:#eab943; background:#fff0c4; }
+.category-details-card { margin-bottom:18px; }
+.assignment-card { margin-top:18px; }
+.assignment-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:15px; margin-bottom:16px; }
+.assignment-heading h2 { margin:0 0 6px; font: bold 19px Georgia,serif; }
+.assignment-heading p { margin:0; color:var(--muted); font-size:12px; line-height:1.5; }
+.relation-badge { display:inline-flex; flex:0 0 auto; padding:7px 10px; border-radius:999px; background:#fff2c9; color:#8b5a0a; font-size:11px; font-weight:bold; }
+.assignment-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
+.assignment-product { display:flex; align-items:flex-start; gap:10px; min-width:0; padding:12px; border:1px solid #eee3d0; border-radius:10px; background:#fffdf8; cursor:pointer; }
+.assignment-product:hover { border-color:#eac45f; background:#fff9e9; }
+.assignment-product input { flex:0 0 auto; width:17px; height:17px; margin:2px 0 0; accent-color:#e99a20; }
+.assignment-product-copy { display:flex; flex-direction:column; gap:5px; min-width:0; }
+.assignment-product-copy strong { color:#3c352b; font-size:12px; }
+.assignment-product-copy small { color:#8b8377; font-size:10px; line-height:1.45; }
+.empty-assignment { margin:0; padding:18px; border:1px dashed #e9d7ae; border-radius:10px; background:#fffcf4; color:#827763; font-size:12px; }
+@media (max-width:680px) {
+  .assignment-list { grid-template-columns:minmax(0,1fr); }
+  .assignment-heading { flex-direction:column; }
+  .relation-badge { white-space:normal; }
+  .linked-products { justify-content:flex-end; }
+}
+
+
+/* Category CRUD and Category 1:N Product relationship */
+.category-text-link { color:#a9670c; font-weight:700; text-decoration:none; }
+.category-text-link:hover { text-decoration:underline; }
+.muted-text { color:#918a7e; font-size:12px; }
+.linked-products { display:flex; flex-wrap:wrap; gap:5px; max-width:390px; }
+.linked-product-chip { display:inline-flex; padding:5px 8px; border:1px solid #f0dfb5; border-radius:999px; background:#fff8e7; color:#80530d; font-size:11px; text-decoration:none; }
+.linked-product-chip:hover { border-color:#eab943; background:#fff0c4; }
+.category-details-card { margin-bottom:18px; }
+.assignment-card { margin-top:18px; }
+.assignment-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:15px; margin-bottom:16px; }
+.assignment-heading h2 { margin:0 0 6px; font: bold 19px Georgia,serif; }
+.assignment-heading p { margin:0; color:var(--muted); font-size:12px; line-height:1.5; }
+.relation-badge { display:inline-flex; flex:0 0 auto; padding:7px 10px; border-radius:999px; background:#fff2c9; color:#8b5a0a; font-size:11px; font-weight:bold; }
+.assignment-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
+.assignment-product { display:flex; align-items:flex-start; gap:10px; min-width:0; padding:12px; border:1px solid #eee3d0; border-radius:10px; background:#fffdf8; cursor:pointer; }
+.assignment-product:hover { border-color:#eac45f; background:#fff9e9; }
+.assignment-product input { flex:0 0 auto; width:17px; height:17px; margin:2px 0 0; accent-color:#e99a20; }
+.assignment-product-copy { display:flex; flex-direction:column; gap:5px; min-width:0; }
+.assignment-product-copy strong { color:#3c352b; font-size:12px; }
+.assignment-product-copy small { color:#8b8377; font-size:10px; line-height:1.45; }
+.empty-assignment { margin:0; padding:18px; border:1px dashed #e9d7ae; border-radius:10px; background:#fffcf4; color:#827763; font-size:12px; }
+@media (max-width:680px) {
+  .assignment-list { grid-template-columns:minmax(0,1fr); }
+  .assignment-heading { flex-direction:column; }
+  .relation-badge { white-space:normal; }
+  .linked-products { justify-content:flex-end; }
+}

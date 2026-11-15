@@ -1,5 +1,6 @@
 <?php
 /** @var \App\Models\Product[] $products */
+/** @var \App\Models\Category|null $category */
 /** @var \Framework\Support\LinkGenerator $link */
 $escape = static fn($value): string => htmlspecialchars((string)$value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 ?>
@@ -50,7 +51,14 @@ $escape = static fn($value): string => htmlspecialchars((string)$value, ENT_QUOT
                                 <strong><?= $escape($product->getName()) ?></strong>
                                 <small class="table-description"><?= $escape($product->getDescription()) ?></small>
                             </td>
-                            <td data-label="Kategória"><?= $escape($product->getCategory()) ?></td>
+                            <?php $category = $product->getOneRelated(\App\Models\Category::class); ?>
+                            <td data-label="Kategória">
+                                <?php if ($category !== null) : ?>
+                                    <a class="category-text-link" href="<?= $link->url('category.edit', ['id' => $category->getId()]) ?>"><?= $escape($category->getName()) ?></a>
+                                <?php else : ?>
+                                    <span class="muted-text">Bez kategórie</span>
+                                <?php endif; ?>
+                            </td>
                             <td data-label="Cena"><strong><?= number_format((float)$product->getPrice(), 2, ',', ' ') ?> €</strong></td>
                             <td data-label="Veľkosť / farba"><?= $escape($product->getSize()) ?> · <?= $escape($product->getColor()) ?></td>
                             <td data-label="Sklad"><span class="stock-badge"><?= (int)$product->getStockQuantity() ?> ks</span></td>

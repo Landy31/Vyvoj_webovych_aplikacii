@@ -30,6 +30,7 @@
             <a href="<?= $link->url('home.index') ?>"><span class="nav-icon" aria-hidden="true">⌂</span> Prehľad</a>
             <a href="<?= $link->url('product.index') ?>"><span class="nav-icon" aria-hidden="true">◇</span> Produkty</a>
             <a href="<?= $link->url('product.add') ?>"><span class="nav-icon" aria-hidden="true">＋</span> Pridať produkt</a>
+            <a href="<?= $link->url('category.index') ?>"><span class="nav-icon" aria-hidden="true">▦</span> Kategórie</a>
             <a href="#objednavky"><span class="nav-icon" aria-hidden="true">▤</span> Objednávky</a>
             <a href="#sklad"><span class="nav-icon" aria-hidden="true">▦</span> Skladové zásoby</a>
             <a href="#nastavenia"><span class="nav-icon" aria-hidden="true">⚙</span> Nastavenia</a>

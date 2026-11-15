@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Framework\Core\BaseController;
 use Framework\Http\HttpException;
@@ -11,24 +12,32 @@ use Framework\Http\Responses\Response;
 /** CRUD actions for products, implemented with the built-in Vaííčko ORM. */
 class ProductController extends BaseController
 {
+    public function authorize(Request $request, string $action): bool
+    {
+        return true;
+    }
+
     public function index(Request $request): Response
     {
         $products = Product::getAll(orderBy: '`id` DESC');
+        // The view resolves each product's related Category using the ORM.
         return $this->html(['products' => $products]);
     }
 
     public function add(Request $request): Response
     {
-        return $this->html(['product' => new Product(), 'errors' => []], 'form');
+        $categories = Category::getAll(orderBy: '`name` ASC');
+        return $this->html(['product' => new Product(), 'categories' => $categories, 'errors' => []], 'form');
     }
 
     public function edit(Request $request): Response
     {
         $product = $this->getProductOr404((int)$request->value('id'));
-        return $this->html(['product' => $product, 'errors' => []], 'form');
+        $categories = Category::getAll(orderBy: '`name` ASC');
+        return $this->html(['product' => $product, 'categories' => $categories, 'errors' => []], 'form');
     }
 
-    /** Create or update a product. Uses POST/Redirect/GET. */
+    /** Create or update a product and its Category foreign-key reference. */
     public function save(Request $request): Response
     {
         if (!$request->isPost()) {
@@ -39,7 +48,8 @@ class ProductController extends BaseController
         $product = $id > 0 ? $this->getProductOr404($id) : new Product();
 
         $name = trim((string)$request->post('name'));
-        $category = trim((string)$request->post('category'));
+        $categoryId = (int)$request->post('categoryId');
+        $category = $categoryId > 0 ? Category::getOne($categoryId) : null;
         $description = trim((string)$request->post('description'));
         $priceInput = str_replace(',', '.', trim((string)$request->post('price')));
         $size = trim((string)$request->post('size'));
@@ -47,7 +57,7 @@ class ProductController extends BaseController
         $stockInput = trim((string)$request->post('stockQuantity'));
 
         $product->setName($name);
-        $product->setCategory($category);
+        $product->setCategoryId($category?->getId());
         $product->setDescription($description);
         $product->setPrice($priceInput !== '' ? $priceInput : '0.00');
         $product->setSize($size);
@@ -58,8 +68,8 @@ class ProductController extends BaseController
         if ($name === '') {
             $errors[] = 'Názov produktu je povinný.';
         }
-        if ($category === '') {
-            $errors[] = 'Vyberte kategóriu produktu.';
+        if ($category === null) {
+            $errors[] = 'Vyberte platnú kategóriu produktu.';
         }
         if ($description === '') {
             $errors[] = 'Popis produktu je povinný.';
@@ -78,14 +88,14 @@ class ProductController extends BaseController
         }
 
         if ($errors !== []) {
-            return $this->html(['product' => $product, 'errors' => $errors], 'form');
+            $categories = Category::getAll(orderBy: '`name` ASC');
+            return $this->html(['product' => $product, 'categories' => $categories, 'errors' => $errors], 'form');
         }
 
         $product->save();
         return $this->redirect($this->url('product.index'))->setStatusCode(303);
     }
 
-    /** Delete a product. Deletion is only allowed through POST. */
     public function delete(Request $request): Response
     {
         if (!$request->isPost()) {
@@ -94,7 +104,6 @@ class ProductController extends BaseController
 
         $product = $this->getProductOr404((int)$request->post('id'));
         $product->delete();
-
         return $this->redirect($this->url('product.index'))->setStatusCode(303);
     }
 

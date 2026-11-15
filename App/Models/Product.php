@@ -4,17 +4,14 @@ namespace App\Models;
 
 use Framework\Core\Model;
 
-/**
- * Product entity mapped to the `products` database table by Vaííčko ORM.
- * All property names intentionally match the SQL column names.
- */
+/** Product entity related to Category by the categoryId foreign key. */
 class Product extends Model
 {
     protected static ?string $tableName = 'products';
 
     protected static ?array $fillable = [
+        'categoryId',
         'name',
-        'category',
         'description',
         'price',
         'size',
@@ -23,8 +20,8 @@ class Product extends Model
     ];
 
     protected ?int $id = null;
+    protected ?int $categoryId = null;
     protected ?string $name = null;
-    protected ?string $category = null;
     protected ?string $description = null;
     protected ?string $price = null;
     protected ?string $size = null;
@@ -32,16 +29,16 @@ class Product extends Model
     protected ?int $stockQuantity = null;
 
     public function getId(): ?int { return $this->id; }
+    public function getCategoryId(): ?int { return $this->categoryId; }
     public function getName(): ?string { return $this->name; }
-    public function getCategory(): ?string { return $this->category; }
     public function getDescription(): ?string { return $this->description; }
     public function getPrice(): ?string { return $this->price; }
     public function getSize(): ?string { return $this->size; }
     public function getColor(): ?string { return $this->color; }
     public function getStockQuantity(): ?int { return $this->stockQuantity; }
 
+    public function setCategoryId(?int $categoryId): void { $this->categoryId = $categoryId; }
     public function setName(string $name): void { $this->name = $name; }
-    public function setCategory(string $category): void { $this->category = $category; }
     public function setDescription(string $description): void { $this->description = $description; }
     public function setPrice(string $price): void { $this->price = $price; }
     public function setSize(string $size): void { $this->size = $size; }
